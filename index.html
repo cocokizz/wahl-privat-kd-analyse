@@ -343,6 +343,101 @@
             padding-bottom: 1.5rem;
         }
 
+        /* --- Sinus Milieu Section --- */
+        .milieu-analysis-text {
+            background-color: var(--bg-light);
+            padding: 2rem;
+            border-radius: 8px;
+            margin-top: 4rem; /* Added margin for spacing */
+            border: 1px solid var(--border-color);
+        }
+        .milieu-analysis-text h3 {
+            font-size: 1.5rem;
+            color: var(--text-primary);
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+        }
+        .milieu-analysis-text ul {
+            list-style-position: inside;
+            padding-left: 0;
+        }
+        .milieu-analysis-text li {
+            margin-bottom: 1rem;
+            padding-left: 0;
+        }
+        .milieu-analysis-text li strong {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        .milieu-map-wrapper {
+            position: relative;
+            max-width: 1000px; /* Limit map width */
+            margin: 0 auto 3rem auto; /* Center map */
+        }
+
+        .milieu-map-image {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .milieu-marker {
+            position: absolute;
+            width: 2rem; /* 32px */
+            height: 2rem; /* 32px */
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: var(--text-primary);
+            background-color: var(--primary-accent);
+            border: 2px solid var(--text-primary);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            font-size: 0.875rem;
+            transform: translate(-50%, -50%); /* Center the marker */
+        }
+
+        .milieu-legend {
+            background-color: var(--bg-light);
+            padding: 2rem;
+            border-radius: 8px;
+        }
+
+        .milieu-legend h3 {
+            font-size: 1.5rem;
+            margin-top: 0;
+            color: var(--text-primary);
+        }
+
+        .legend-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem 2rem;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: var(--text-secondary);
+        }
+
+        .legend-marker {
+            flex-shrink: 0;
+            width: 1.75rem;
+            height: 1.75rem;
+            background-color: var(--primary-accent);
+            color: var(--text-primary);
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
         /* --- Scroll Animation --- */
         .reveal {
             opacity: 0;
@@ -380,6 +475,9 @@
             .main-header { padding: 1rem; }
             .main-nav { display: none; } /* Vereinfachung für mobile Ansicht */
             .container { padding: 0 1.5rem; }
+            .legend-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -396,6 +494,7 @@
                     <li><a href="#cluster-performer">Performer</a></li>
                     <li><a href="#cluster-individualisten">Individualisten</a></li>
                     <li><a href="#cluster-spezialisten">Spezialisten</a></li>
+                    <li><a href="#sinus-milieus">Sinus-Milieus</a></li>
                 </ul>
             </nav>
         </div>
@@ -700,6 +799,94 @@
                     </div>
                 </div>
 
+            </div>
+        </section>
+
+        <!-- ======= Sinus Milieus Section ======= -->
+        <section id="sinus-milieus" class="cluster-detail reveal">
+            <div class="container">
+                <div class="cluster-header">
+                    <h2>Ihre Zielgruppen im Sinus-Milieu</h2>
+                    <p>Visuelle Zuordnung Ihrer Markencluster und Marken zu den entsprechenden Sinus-Milieus auf der Karte, gefolgt von einer detaillierten Aufschlüsselung.</p>
+                </div>
+                
+                <!-- Map with Markers -->
+                <div class="milieu-map-wrapper">
+                    <img src="sinusmap.jpg" 
+                         alt="Sinus-Milieus Karte von Deutschland" 
+                         class="milieu-map-image"
+                         onerror="this.onerror=null;this.src='https://placehold.co/1200x800/1E1E1E/B3B3B3?text=Kartenbild+nicht+verf%C3%BCgbar';">
+                    
+                    <!-- Markers Overlay -->
+                    <div class="milieu-marker" style="top: 26%; left: 36%;">1</div>
+                    <div class="milieu-marker" style="top: 25%; left: 51%;">2</div>
+                    <div class="milieu-marker" style="top: 33%; left: 49%;">3</div>
+                    <div class="milieu-marker" style="top: 30%; left: 56%;">4</div>
+                    <div class="milieu-marker" style="top: 31%; left: 68%;">5</div>
+                    <div class="milieu-marker" style="top: 39%; left: 66%;">6</div>
+                    <div class="milieu-marker" style="top: 33%; left: 82%;">7</div>
+                    <div class="milieu-marker" style="top: 41%; left: 80%;">8</div>
+                    <div class="milieu-marker" style="top: 50%; left: 40%;">9</div>
+                    <div class="milieu-marker" style="top: 58%; left: 38%;">10</div>
+                    <div class="milieu-marker" style="top: 54%; left: 45%;">11</div>
+                    <div class="milieu-marker" style="top: 51%; left: 59%;">12</div>
+                    <div class="milieu-marker" style="top: 59%; left: 57%;">13</div>
+                    <div class="milieu-marker" style="top: 55%; left: 64%;">14</div>
+                    <div class="milieu-marker" style="top: 69%; left: 67%;">15</div>
+                </div>
+
+                <!-- Legend -->
+                <div class="milieu-legend">
+                    <h3>Legende</h3>
+                    <div class="legend-grid">
+                        <div class="legend-item"><span class="legend-marker">1</span> Konservativ-Gehobene (Premium & Performance)</div>
+                        <div class="legend-item"><span class="legend-marker">2</span> Postmaterielle (Premium & Performance)</div>
+                        <div class="legend-item"><span class="legend-marker">3</span> Postmaterielle (Innovation & Lifestyle)</div>
+                        <div class="legend-item"><span class="legend-marker">4</span> Postmaterielle (Renault)</div>
+                        <div class="legend-item"><span class="legend-marker">5</span> Performer (Premium & Performance)</div>
+                        <div class="legend-item"><span class="legend-marker">6</span> Performer (Jeep & Alpine)</div>
+                        <div class="legend-item"><span class="legend-marker">7</span> Expeditive (Innovation & Lifestyle)</div>
+                        <div class="legend-item"><span class="legend-marker">8</span> Expeditive (Jeep & Alpine)</div>
+                        <div class="legend-item"><span class="legend-marker">9</span> Nostalgisch-Bürgerliche (Moderner Mainstream)</div>
+                        <div class="legend-item"><span class="legend-marker">10</span> Nostalgisch-Bürgerliche (Renault)</div>
+                        <div class="legend-item"><span class="legend-marker">11</span> Nostalgisch-Bürgerliche (Dacia)</div>
+                        <div class="legend-item"><span class="legend-marker">12</span> Adaptiv-Pragmatische (Moderner Mainstream)</div>
+                        <div class="legend-item"><span class="legend-marker">13</span> Adaptiv-Pragmatische (Renault)</div>
+                        <div class="legend-item"><span class="legend-marker">14</span> Adaptiv-Pragmatische (Dacia)</div>
+                        <div class="legend-item"><span class="legend-marker">15</span> Konsum-Hedonistische (Dacia)</div>
+                    </div>
+                </div>
+
+                <!-- Detailed Analysis Text -->
+                <div class="milieu-analysis-text">
+                    <h3>Detaillierte Aufschlüsselung der Milieus</h3>
+                    <p>Wenn man die in Ihrem Zieldokument genannten Milieus auf der Karte markiert, ergibt sich folgendes Bild: Ihre Zielgruppen konzentrieren sich hauptsächlich auf die obere Hälfte und das Zentrum der Gesellschaft, von der Oberschicht bis in die mittlere und untere Mittelschicht. Sie decken ein breites Spektrum von traditionellen bis zu stark neuorientierten Werten ab.</p>
+                    
+                    <h3>Ihre Zielgruppen in der Sinus-Milieu-Karte</h3>
+                    <p>Die folgenden Milieus werden durch Ihre Markencluster primär oder sekundär angesprochen:</p>
+                    
+                    <h3>Oberschicht / Obere Mittelschicht:</h3>
+                    <ul>
+                        <li><strong>Konservativ-Gehobenes Milieu (11%):</strong> Dieses Milieu mit traditioneller Grundorientierung wird in Ihren Unterlagen als "Konservativ-Etablierte" bezeichnet und ist eine sekundäre Zielgruppe für das "Premium & Performance"-Cluster.<sup>1</sup></li>
+                        <li><strong>Postmaterielles Milieu (12%):</strong> Auf der Karte zwischen Modernisierung und Neuorientierung verortet, wird dieses Milieu in Ihrem Dokument als "Liberal-Intellektuelle" bezeichnet. Es wird vom "Premium & Performance"-Cluster<sup>2</sup>, dem "Innovation & Lifestyle"-Cluster<sup>3</sup> und der Marke Renault<sup>4</sup> angesprochen.</li>
+                        <li><strong>Milieu der Performer (10%):</strong> Als leistungsorientierte und auf Neuorientierung ausgerichtete Gruppe ist dies eine Kernzielgruppe für das Cluster "Premium & Performance"<sup>5</sup> sowie für die Nischenmarken Jeep und Alpine.<sup>6</sup></li>
+                        <li><strong>Expeditives Milieu (10%):</strong> Diese non-konformistische und stark neuorientierte Gruppe ist eine Schlüsselzielgruppe für das Cluster "Innovation & Lifestyle"<sup>7</sup> und die Marken Jeep und Alpine.<sup>8</sup></li>
+                    </ul>
+
+                    <h3>Mittlere Mittelschicht:</h3>
+                    <ul>
+                        <li><strong>Nostalgisch-Bürgerliches Milieu (11%):</strong> In Ihren Dokumenten als "Bürgerliche Mitte" bezeichnet, wird dieses Milieu vom Cluster "Moderner Mainstream"<sup>9</sup> sowie von den Marken Renault<sup>10</sup> und Dacia<sup>11</sup> adressiert.</li>
+                        <li><strong>Adaptiv-Pragmatische Mitte (12%):</strong> Dieses Milieu bildet den modernen, flexiblen Kern der Gesellschaft. Es ist die fundamentale Zielgruppe für das Cluster "Moderner Mainstream"<sup>12</sup> und die Marken Renault<sup>13</sup> und Dacia<sup>14</sup>.</li>
+                    </ul>
+
+                    <h3>Untere Mittelschicht / Unterschicht:</h3>
+                    <ul>
+                        <li><strong>Konsum-Hedonistisches Milieu (8%):</strong> Dieses auf Genuss und Modernisierung ausgerichtete Milieu wird in Ihren Unterlagen als "Konsum-Materialisten" identifiziert und ist eine Zielgruppe für die Marke Dacia.<sup>15</sup></li>
+                    </ul>
+
+                    <h3>Nicht direkt angesprochene Milieus</h3>
+                    <p>Auf Basis Ihrer Dokumente werden die folgenden Milieus nicht explizit als Zielgruppen genannt: Traditionelles Milieu (10%), Prekäres Milieu (9%), Neo-Ökologisches Milieu (8%).</p>
+                </div>
             </div>
         </section>
 
