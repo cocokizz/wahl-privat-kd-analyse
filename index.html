@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wahl Group | Analyse Automotive Zielgruppen</title>
+    
+    <!-- Google Font Import: Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- CSS Variablen (zentrale Steuerung) --- */
+        :root {
+            --bg-dark: #121212;
+            --bg-light: #1E1E1E;
+            --primary-accent: #00A8A8; /* Ein moderner Teal-Ton als Akzent */
+            --text-primary: #FFFFFF;
+            --text-secondary: #B3B3B3;
+            --border-color: #333333;
+            --font-family: 'Poppins', sans-serif;
+        }
+
+        /* --- Basis- & Reset-Styles --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.7;
+        }
+
+        /* --- Globale Helferklassen --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        section {
+            padding: 6rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        section:last-of-type {
+            border-bottom: none;
+        }
+
+        h1, h2, h3 {
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        h1 { font-size: 3rem; color: var(--text-primary); }
+        h2 { font-size: 2.5rem; color: var(--text-primary); text-align: center; }
+        h3 { font-size: 1.8rem; color: var(--primary-accent); }
+        h4 { font-size: 1.2rem; font-weight: 500; margin-bottom: 0.5rem; }
+
+        p {
+            margin-bottom: 1rem;
+            color: var(--text-secondary);
+            max-width: 70ch; /* Bessere Lesbarkeit */
+        }
+
+        a {
+            color: var(--primary-accent);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--text-primary);
+        }
+
+        .text-center {
+            text-align: center;
+        }
+        .text-center p {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* --- Header & Navigation --- */
+        .main-header {
+            position: sticky;
+            top: 0;
+            width: 100%;
+            padding: 1rem 2rem;
+            background-color: rgba(18, 18, 18, 0.8);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .main-header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-svg {
+            width: 150px;
+            height: auto;
+            fill: var(--text-primary); /* SVG Farbe steuern */
+        }
+
+        .main-nav ul {
+            list-style: none;
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .main-nav a {
+            color: var(--text-secondary);
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        .main-nav a:hover, .main-nav a.active {
+            color: var(--text-primary);
+        }
+
+
+        /* --- Hero Section --- */
+        #hero {
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        #hero .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+
+        #hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin-bottom: 2rem;
+        }
+
+        /* --- Audio Player Styling --- */
+        audio {
+            width: 100%;
+            max-width: 500px;
+            margin-top: 2rem;
+            border-radius: 5px;
+        }
+
+        audio::-webkit-media-controls-panel {
+            background-color: var(--bg-light);
+        }
+
+        audio::-webkit-media-controls-play-button,
+        audio::-webkit-media-controls-volume-slider,
+        audio::-webkit-media-controls-mute-button,
+        audio::-webkit-media-controls-timeline {
+            filter: invert(1);
+        }
+
+
+        /* --- Cluster Karten --- */
+        .cluster-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .cluster-card {
+            background-color: var(--bg-light);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 2rem;
+            text-align: left;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .cluster-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+        }
+
+        .cluster-card h3 {
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+        }
+
+        .cluster-card p {
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.8rem;
+            background-color: var(--primary-accent);
+            color: var(--text-primary) !important;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #008080;
+            color: var(--text-primary) !important;
+        }
+
+        /* --- Marken Übersicht --- */
+        .brand-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .brand-logo {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 1.5rem;
+            padding: 1rem;
+            color: var(--text-secondary);
+            transition: all 0.3s ease;
+        }
+
+
+        /* --- Detail Sektionen der Cluster --- */
+        .cluster-detail .cluster-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .cluster-detail .cluster-header p {
+            margin-left: auto;
+            margin-right: auto;
+            font-size: 1.1rem;
+        }
+
+        .persona-section {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 3rem;
+            align-items: flex-start;
+            margin-top: 3rem;
+            background-color: var(--bg-light);
+            padding: 3rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .persona-demographics {
+            background: var(--bg-dark);
+            padding: 2rem;
+            border-radius: 8px;
+            position: sticky;
+            top: 120px; /* Abstand zum Header */
+        }
+
+        .persona-demographics h4 {
+            margin-top: 1.5rem;
+            color: var(--text-secondary);
+            font-size: 1rem;
+            font-weight: 400;
+        }
+        .persona-demographics span {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+        .persona-demographics hr {
+            border: none;
+            height: 1px;
+            background-color: var(--border-color);
+            margin: 1.5rem 0;
+        }
+        .persona-demographics .persona-name {
+            color: var(--primary-accent);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        /* --- Akkordeon für Persona-Details --- */
+        .accordion-item {
+            border-bottom: 1px solid var(--border-color);
+        }
+        .accordion-item:last-child {
+            border-bottom: none;
+        }
+        .accordion-button {
+            width: 100%;
+            background: none;
+            border: none;
+            text-align: left;
+            padding: 1.5rem 0;
+            font-size: 1.2rem;
+            font-family: var(--font-family);
+            font-weight: 600;
+            color: var(--text-primary);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: color 0.3s;
+        }
+        .accordion-button:hover {
+            color: var(--primary-accent);
+        }
+        .accordion-button::after {
+            content: '+';
+            font-size: 2rem;
+            font-weight: 300;
+            transition: transform 0.3s ease;
+        }
+        .accordion-button.active::after {
+            transform: rotate(45deg);
+        }
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out, padding 0.4s ease-out;
+        }
+        .accordion-content-inner {
+            padding-bottom: 1.5rem;
+        }
+
+        /* --- Scroll Animation --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- Footer --- */
+        .main-footer {
+            padding: 2rem;
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* --- Responsivität --- */
+        @media (max-width: 992px) {
+            h1 { font-size: 2.5rem; }
+            h2 { font-size: 2rem; }
+            #hero h1 { font-size: 2.8rem; }
+            .persona-section {
+                grid-template-columns: 1fr;
+            }
+            .persona-demographics {
+                position: static; /* Sticky positioning aufheben */
+            }
+        }
+
+        @media (max-width: 768px) {
+            section { padding: 4rem 0; }
+            .main-header { padding: 1rem; }
+            .main-nav { display: none; } /* Vereinfachung für mobile Ansicht */
+            .container { padding: 0 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="container">
+            <!-- SVG Logo direkt eingebettet -->
+            <svg class="logo-svg" viewBox="0 0 457.9 204.18" xmlns="http://www.w3.org/2000/svg"><path d="M191.3,0l-95.7,140.8h-29.2l-.7-.7v-50.8c0-.2,1.2-.8-.2-.7l-35.5,52.2H.7l-.7-.7V34h30.7v52.2l35.2-52.2h30.4v52.2L154.9,0h36.4Z"/><polygon points="303.5 34 292 71.4 329.4 71.4 341.6 34 376.4 34 342.6 140.8 307.8 140.8 320.8 97.7 283.9 97.7 270.2 140.8 235.4 140.8 268 34 303.5 34"/><path d="M222.5,34l8.2,106.8h-34l-.5-17.2h-35.7l-10.5,17.2h-37.6l72.2-106.8h38.1-.2ZM196.1,100.6v-37.8l-22.1,37.8h22.1Z"/><polygon points="427.2 34 402.8 114.5 457.9 114.5 450.1 139 449.1 140.8 359.1 140.8 392.2 34 427.2 34"/><path d="M195.6,171v-2.4l4.1.5.2.7c-.4,9.7,1,19.5-1.2,29-3.2,7.6-21.2,7.6-20.4-2.9,1.3,0,3.7-.3,4.5,1s.3,2.1,2.4,2.9c6,2.4,11-2,9.9-8.2-5.4,3.9-12.3,3.4-15.7-2.7-5.2-9.3.5-24.2,12.7-19.9l3.5,2h0ZM188.3,172c-8.7.8-8.4,19.6,1.8,18.1s7.4-14.6,1.6-17.3-2.6-.8-3.3-.8h-.1Z"/><path d="M10.1,187.3l5.3-18.6,4.5.4,4.5,17.7c.7,0,.8-.7.9-1.2,1.9-5.4,3.1-11.5,4.8-17h4.3l-7.6,25.2-4.8.2-4.6-18.2-4.6,18.2h-5l-7.8-25.4,5,.5,5,18.2h.1Z"/><path d="M409,159.5v34.5h-4.3v-2.4c-4.9,5.1-12.6,3.4-15.9-2.5s-1.9-17.8,5.7-20.3,6.9-.4,9.7,2.3v-11.5h4.8v-.1ZM397.9,172c-8.2.7-7.9,17-1,18.5s8.3-5.8,7.8-11.2-2.8-7.7-6.8-7.3Z"/><path d="M328.5,192v11.5h-4.3v-35h3.8v2.9l2.2-1.8c6.6-3.9,14.5.5,15.5,7.9s-2.3,18.3-13.1,16.9l-4.2-2.3.1-.1ZM330.5,189c2.3,2.3,6.2,2.1,8.5,0s3.2-11.9.2-15.1-9.4-.9-10.7,4.2-.5,8.6,1.9,11l.1-.1Z"/><path d="M449.3,182.9h-18.2c-.7,6.7,8.1,10.7,12.2,5.3s.7-2.1,1.5-2.3l4.5.4c-.8,4-4.8,7.8-8.9,8.2-11.1,1.1-15.5-6.2-14.1-16.5s5.2-9.1,9.9-9.7c8.8-1.2,14.2,6.5,13.1,14.7v-.1ZM444.5,178.6c-.8-8.8-12.4-8.6-13.4,0h13.4Z"/><path d="M71.9,194h-4.8l-.8-2.4c-2,.7-3.7,2.4-5.9,2.8s-6.4.3-8.5-.9c-3.6-2.1-4.3-6.3-2.3-9.9,2.9-5.1,11.4-4.2,16.4-5.4,0-2.9-.3-4.8-3.2-5.6s-8.4-.2-8.8,4.2l-4.8-.5c.4-2.1,1.4-4.4,3.1-5.8,4.4-3.4,17-3.6,18,3.1s-.2,7.9,0,11.5.3,4.7.5,6.2,1,1.6.9,2.6l.2.1ZM66.2,181.5c-4.2,2.5-14.8.1-11.9,7.8,3.4,2.9,9.2,1.4,11.2-2.6l.7-5.3v.1Z"/><path d="M93.5,159.5v12c4-4.1,10.9-4.8,14.6,0s.8.8,1,1.4.7,2.5.7,2.7v18.4h-4l-.7-.8v-17.2c-1-3.9-5.3-4.6-8.5-2.7s-2.1,3.1-3,5.6v15.1h-4.3v-34.5h4.3-.1Z"/><path d="M255,168.2c6.2-.9,11.9,3.1,13.1,9.2s.3,8.3-1.2,11.3c-4.1,8.2-17.8,7.8-21.1-1s-1.5-12.7,2.6-16.5,4.3-2.7,6.6-3ZM256.4,172.1c-8.3.2-9.4,13.6-3.2,17.8s5.2,1.1,6.9-.2c6-4.4,4.6-17.8-3.8-17.6h.1Z"/><path d="M289.6,168.6v18.4c0,.2,1.3,2.2,1.7,2.6,2.8,2,6.4,1,8.3-1.6s1.4-2.9,1.4-3.4v-16h4.3v25.4h-3.8l-.2-2.9c-3.1,4-10.1,4.6-13.9,1.4s-2.2-2.9-2.2-3.6v-20.4h4.3l.1.1Z"/><path d="M218.2,168.6h3.8v2.9c2.9-3,5.9-4.9,9.5-1.6l-.9,4c-.3.4-4.2-2.8-6.6.8s-1.5,3.4-1.5,3.8v15.6h-4.3v-25.5Z"/><rect x="128" y="159.5" width="4.3" height="34.5"/><rect x="149.6" y="179.1" width="12.9" height="4.8"/><path d="M369.7,194h-5.3v-5.3l4.8.2c.9.6.3,3.9.5,5.1Z"/></svg>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#clusters">Zielgruppen Cluster</a></li>
+                    <li><a href="#cluster-pragmatiker">Pragmatiker</a></li>
+                    <li><a href="#cluster-performer">Performer</a></li>
+                    <li><a href="#cluster-individualisten">Individualisten</a></li>
+                    <li><a href="#cluster-spezialisten">Spezialisten</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- ======= Hero Section ======= -->
+        <section id="hero">
+            <div class="container">
+                <h1 class="reveal">Die emotionale Welt der Automobilkunden</h1>
+                <p class="reveal">Eine tiefgehende Analyse der Zielgruppen, ihrer Motivationen und Bedürfnisse im Automobilmarkt. Basierend auf Sinus-Milieus und Limbic Map.</p>
+                <!-- HINWEIS: Die Audio-Datei 'Automotive Brand Strategy_Target Audiences & Motivations.wav' muss im selben Verzeichnis wie diese HTML-Datei liegen. -->
+                <audio controls class="reveal">
+                    <source src="Automotive Brand Strategy_Target Audiences & Motivations.wav" type="audio/wav">
+                    Ihr Browser unterstützt das Audio-Element nicht.
+                </audio>
+            </div>
+        </section>
+
+        <!-- ======= Cluster Übersicht ======= -->
+        <section id="clusters" class="reveal">
+            <div class="container text-center">
+                <h2>Vier strategische Zielgruppen-Cluster</h2>
+                <p>Jede Marke spricht eine einzigartige emotionale Welt an. Wir haben den Markt in vier Kerncluster unterteilt, um die dahinterliegenden Motivationen zu verstehen.</p>
+
+                <div class="cluster-grid">
+                    <div class="cluster-card">
+                        <h3>Die Modernen Pragmatiker</h3>
+                        <p>Fokus auf Sicherheit, Familie und Preis-Leistung. Angetrieben vom Balance-System.</p>
+                        <a href="#cluster-pragmatiker" class="btn">Details ansehen</a>
+                    </div>
+                    <div class="cluster-card">
+                        <h3>Die Premium Performer</h3>
+                        <p>Streben nach Erfolg, Status und Überlegenheit. Angetrieben vom Dominanz-System.</p>
+                        <a href="#cluster-performer" class="btn">Details ansehen</a>
+                    </div>
+                    <div class="cluster-card">
+                        <h3>Die Urbanen Individualisten</h3>
+                        <p>Suche nach Neuem, Spaß und Selbstausdruck. Angetrieben vom Stimulanz-System.</p>
+                        <a href="#cluster-individualisten" class="btn">Details ansehen</a>
+                    </div>
+                    <div class="cluster-card">
+                        <h3>Die Spezialisten & Nischen</h3>
+                        <p>Leidenschaftliche Enthusiasten, die das Besondere suchen, von Abenteuer bis Purismus.</p>
+                        <a href="#cluster-spezialisten" class="btn">Details ansehen</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ======= Marken Übersicht ======= -->
+        <section id="brands" class="reveal">
+            <div class="container text-center">
+                 <h2>Analysierte Marken im Portfolio</h2>
+                 <div class="brand-grid">
+                    <div class="brand-logo">BMW</div>
+                    <div class="brand-logo">MINI</div>
+                    <div class="brand-logo">Opel</div>
+                    <div class="brand-logo">Ford</div>
+                    <div class="brand-logo">Kia</div>
+                    <div class="brand-logo">Skoda</div>
+                    <div class="brand-logo">XPeng</div>
+                    <div class="brand-logo">MG</div>
+                    <div class="brand-logo">Peugeot</div>
+                    <div class="brand-logo">Citroën</div>
+                    <div class="brand-logo">Mazda</div>
+                    <div class="brand-logo">Jeep</div>
+                    <div class="brand-logo">Alfa Romeo</div>
+                    <div class="brand-logo">DS Automobiles</div>
+                    <div class="brand-logo">Renault</div>
+                    <div class="brand-logo">Dacia</div>
+                    <div class="brand-logo">Alpine</div>
+                 </div>
+            </div>
+        </section>
+
+        <!-- ======= Cluster 1: Moderne Pragmatiker ======= -->
+        <section id="cluster-pragmatiker" class="cluster-detail reveal">
+            <div class="container">
+                <div class="cluster-header">
+                    <h2>Cluster 1: Die Modernen Pragmatiker</h2>
+                    <p>Diese Gruppe bildet das Rückgrat der Gesellschaft. Ihr Handeln ist geprägt von Vernunft, dem Wunsch nach Sicherheit und der Absicherung der Familie. Das primäre Motiv ist das <strong>Balance-System.</strong></p>
+                    <p><strong>Zugehörige Marken:</strong> Opel, Ford, Skoda, Kia, Mazda, Renault, Peugeot, Citroën.</p>
+                </div>
+
+                <!-- Persona: Markus Weber -->
+                <div class="persona-section">
+                    <div class="persona-demographics">
+                         <div class="persona-name">Markus Weber</div>
+                         <p>Repräsentiert die Kernkunden unseres Mainstream-Portfolios.</p>
+                         <hr>
+                         <h4>Alter: <span>44</span></h4>
+                         <h4>Beruf: <span>Industriemeister</span></h4>
+                         <h4>Wohnort: <span>Betzdorf, Rheinland-Pfalz</span></h4>
+                         <h4>Familie: <span>Verheiratet, 2 Kinder</span></h4>
+                         <h4>Einkommen: <span>ca. 75.000 € / Jahr</span></h4>
+                    </div>
+                    <div class="persona-details">
+                        <h3>Wer ist Markus und was treibt ihn an?</h3>
+                        <div class="accordion">
+                            <div class="accordion-item">
+                                <button class="accordion-button">Sein Alltag & seine Ziele</button>
+                                <div class="accordion-content">
+                                    <div class="accordion-content-inner">
+                                        <p>Markus' Leben ist gut strukturiert. Er pendelt täglich, fährt die Kinder zum Sport und erledigt am Wochenende die Familieneinkäufe. Sein großes Ziel ist es, seiner Familie ein sicheres und schönes Leben zu ermöglichen. Das Auto ist dafür ein zentrales, multifunktionales Werkzeug.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <button class="accordion-button active">Werte, Bedürfnisse & Ängste (Limbic Map)</button>
+                                <div class="accordion-content" style="max-height: fit-content;">
+                                    <div class="accordion-content-inner">
+                                        <p><strong>Werte:</strong> Sicherheit, Zuverlässigkeit, Familie, Vernunft, Preis-Leistung. <br>
+                                        <strong>Bedürfnis (Balance):</strong> Sein Handeln ist stark vom Balance-System geprägt. Er hat ein tiefes Bedürfnis nach Stabilität, finanzieller Planbarkeit und Sicherheit für seine Familie. <br>
+                                        <strong>Angst (Balance):</strong> Seine größte Angst ist der Kontrollverlust durch unkalkulierbare Risiken, wie eine teure Reparatur, die das Familienbudget empfindlich stören würde. <br>
+                                        <strong>Wunsch (Balance/Stimulanz):</strong> Der Hauptwunsch ist Sorglosigkeit. Sein Interesse an E-Mobilität zeigt einen leichten Wunsch nach Stimulanz – modern handeln, aber nur wenn das Risiko kalkulierbar ist.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <button class="accordion-button">Probleme & Lösungen der Wahl Group</button>
+                                <div class="accordion-content">
+                                    <div class="accordion-content-inner">
+                                        <p><strong>Sein Problem:</strong> Er benötigt maximale Vielseitigkeit und Zuverlässigkeit bei einem begrenzten Budget. Er ist frustriert von unklaren Preisangaben und fehlender ehrlicher Beratung. <br>
+                                        <strong>Unsere Lösung:</strong> Unsere Marken wie Skoda oder Kia bieten exzellentes Preis-Leistungs-Verhältnis und lange Garantien. Als regionaler Händler lösen wir sein Vertrauensproblem durch ehrliche Beratung und transparente Service-Pakete, die ihm die Angst vor unkalkulierbaren Kosten nehmen. <br>
+                                        <strong>Der Mehrwert:</strong> Wir bieten ihm Sorglosigkeit.</p>
+                                    </div>
+                                </div>
+                            </div>
+                             <div class="accordion-item">
+                                <button class="accordion-button">Medienverhalten & Kommunikation</button>
+                                <div class="accordion-content">
+                                    <div class="accordion-content-inner">
+                                        <p><strong>Medien:</strong> Er nutzt Facebook für soziale Kontakte und YouTube gezielt für praxisnahe Autotests und Vergleiche. Vor einem Kauf liest er detaillierte Testberichte (ADAC, AMS) und sucht in Foren nach Langzeiterfahrungen. <br>
+                                        <strong>Kommunikation:</strong> Er erwartet Transparenz, Ehrlichkeit und einen persönlichen, nahbaren Kontakt mit einem festen Ansprechpartner aus der Region.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ======= Cluster 2: Premium Performer ======= -->
+        <section id="cluster-performer" class="cluster-detail reveal">
+             <div class="container">
+                <div class="cluster-header">
+                    <h2>Cluster 2: Die Premium Performer</h2>
+                    <p>Diese ehrgeizigen Leistungsträger sehen ein Auto als Ausdruck ihres Erfolgs. Ihr Handeln zielt auf Erfolg, Kontrolle und die Bestätigung ihres hohen sozialen Status ab. Das Kernmotiv ist das <strong>Dominanz-System.</strong></p>
+                    <p><strong>Zugehörige Marken:</strong> BMW, BMW Motorrad, Alfa Romeo, DS Automobiles.</p>
+                </div>
+
+                <!-- Persona: Dr. Lena Hauser -->
+                <div class="persona-section">
+                     <div class="persona-demographics">
+                         <div class="persona-name">Dr. Lena Hauser</div>
+                         <p>Repräsentiert die anspruchsvollen Kunden unseres Premium-Segments.</p>
+                         <hr>
+                         <h4>Alter: <span>41</span></h4>
+                         <h4>Beruf: <span>Partnerin in Anwaltskanzlei</span></h4>
+                         <h4>Wohnort: <span>Siegen (Penthouse)</span></h4>
+                         <h4>Status: <span>Ledig, in Partnerschaft</span></h4>
+                         <h4>Einkommen: <span>> 150.000 € / Jahr</span></h4>
+                    </div>
+                    <div class="persona-details">
+                        <h3>Wer ist Lena und was treibt sie an?</h3>
+                        <div class="accordion">
+                           <div class="accordion-item">
+                                <button class="accordion-button">Ihr Alltag & ihre Ziele</button>
+                                <div class="accordion-content">
+                                    <div class="accordion-content-inner">
+                                        <p>Lenas Tage sind lang und fordernd. Ihr Auto ist ihr mobiles Büro, ein Rückzugsort und eine Belohnung. Sie nutzt es für Geschäftstermine und genießt die Fahrdynamik zum Abschalten. Ihr Ziel ist es, an der Spitze zu stehen und sich eine hohe Lebensqualität zu bewahren.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <button class="accordion-button active">Werte, Bedürfnisse & Ängste (Limbic Map)</button>
+                                <div class="accordion-content" style="max-height: fit-content;">
+                                    <div class="accordion-content-inner">
+                                        <p><strong>Werte:</strong> Leistung, Erfolg, Qualität, Effizienz, Ästhetik, Status. <br>
+                                        <strong>Bedürfnis (Dominanz):</strong> Ihr Profil wird vom Dominanz-System angetrieben. Sie hat das Bedürfnis nach Kontrolle, Anerkennung und nach Produkten, die ihre Überlegenheit widerspiegeln. <br>
+                                        <strong>Angst (Dominanz):</strong> Ihre größte Angst ist der Status- und Kontrollverlust, Bedeutungslosigkeit und vor allem Zeitverschwendung durch Inkompetenz anderer. <br>
+                                        <strong>Wunsch (Dominanz/Stimulanz):</strong> Sie wünscht sich ein Fahrzeug, das ihren Erfolg repräsentiert und ihr ein Gefühl souveräner Kontrolle gibt. Das Verlangen nach "Fahrdynamik" ist ihr Bedürfnis nach einem exklusiven Erlebnis als Belohnung.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <button class="accordion-button">Probleme & Lösungen der Wahl Group</button>
+                                <div class="accordion-content">
+                                    <div class="accordion-content-inner">
+                                         <p><strong>Ihr Problem:</strong> Extremer Zeitmangel und der Anspruch, dass alles in ihrem Leben hocheffizient und reibungslos funktioniert. Sie wird durch jede Form von Zeitverschwendung und mittelmäßigen Service frustriert. <br>
+                                        <strong>Unsere Lösung:</strong> Marken wie BMW bieten die erwartete Symbiose aus Performance und repräsentativem Design. Wir als Wahl Group lösen ihr Zeitproblem durch einen maßgeschneiderten Premium-Service mit persönlichem Berater, Hol- und Bring-Dienst und proaktiver Terminplanung. <br>
+                                        <strong>Der Mehrwert:</strong> Wir schenken ihr das wertvollste Gut: Zeit. Sie erhält einen Service, der so exklusiv ist wie ihr Auto.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <button class="accordion-button">Medienverhalten & Kommunikation</button>
+                                <div class="accordion-content">
+                                    <div class="accordion-content-inner">
+                                        <p><strong>Medien:</strong> Sie nutzt LinkedIn aktiv zur Positionierung und Instagram passiv zur Inspiration. Sie konsumiert ausschließlich hochwertige Inhalte wie Business-Podcasts und Leitartikel in digitalen Wirtschaftsmedien. <br>
+                                        <strong>Kommunikation:</strong> Sie erwartet absolute Effizienz, Kompetenz und Exklusivität. Ein fester, proaktiver Ansprechpartner, der ihre Zeit respektiert, ist entscheidend.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ======= Cluster 3: Urbane Individualisten ======= -->
+        <section id="cluster-individualisten" class="cluster-detail reveal">
+            <div class="container">
+                <div class="cluster-header">
+                    <h2>Cluster 3: Die Urbanen Individualisten</h2>
+                    <p>Diese Pioniere leben in urbanen Zentren und suchen nach Ausdruck ihrer einzigartigen Persönlichkeit. Sie sind "Early Adopters" und wollen sich von der Masse abheben. Das dominierende Motiv ist das <strong>Stimulanz-System.</strong></p>
+                    <p><strong>Zugehörige Marken:</strong> MINI, XPeng, MG, Jeep.</p>
+                </div>
+
+                <!-- Persona: Tim Köhler -->
+                <div class="persona-section">
+                    <div class="persona-demographics">
+                         <div class="persona-name">Tim Köhler</div>
+                         <p>Repräsentiert die kreativen und technikaffinen Kunden für unsere Lifestyle-Marken.</p>
+                         <hr>
+                         <h4>Alter: <span>32</span></h4>
+                         <h4>Beruf: <span>UX Designer</span></h4>
+                         <h4>Wohnort: <span>Köln (Altbauwohnung)</span></h4>
+                         <h4>Status: <span>Ungebunden</span></h4>
+                         <h4>Einkommen: <span>ca. 65.000 € / Jahr</span></h4>
+                    </div>
+                    <div class="persona-details">
+                        <h3>Wer ist Tim und was treibt ihn an?</h3>
+                         <div class="accordion">
+                           <div class="accordion-item">
+                                <button class="accordion-button">Sein Alltag & seine Ziele</button>
+                                <div class="accordion-content">
+                                    <div class="accordion-content-inner">
+                                        <p>Tims Leben ist flexibel und projektbasiert. Er nutzt sein Auto weniger zum Pendeln als für Freizeitaktivitäten und Ausflüge. Als Digital-Nativ ist er immer auf der Suche nach Inspiration und neuen Trends. Sein Ziel ist es, kreativ zu arbeiten und Freiraum für seine Leidenschaften zu haben.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <button class="accordion-button active">Werte, Bedürfnisse & Ängste (Limbic Map)</button>
+                                <div class="accordion-content" style="max-height: fit-content;">
+                                    <div class="accordion-content-inner">
+                                         <p><strong>Werte:</strong> Individualität, Kreativität, Spaß, Innovation, Erlebnis. <br>
+                                        <strong>Bedürfnis (Stimulanz):</strong> Sein Profil ist fast ausschließlich im Stimulanz-System verankert. Er hat ein starkes Bedürfnis nach Neuem, Abwechslung und dem Ausdruck seiner einzigartigen Persönlichkeit. <br>
+                                        <strong>Angst (Stimulanz):</strong> Seine größte Angst ist die Langeweile und Konformität. Die Vorstellung, als spießig oder uninspiriert zu gelten, ist für ihn inakzeptabel. <br>
+                                        <strong>Wunsch (Stimulanz):</strong> Er wünscht sich Produkte, die eine Erweiterung seines Stils sind, technologisch faszinieren ("Gadget-Faktor") und Freiheit für spontane Abenteuer geben.</p>
+                                    </div>
+                                </div>
+                            </div>
+                           <div class="accordion-item">
+                                <button class="accordion-button">Probleme & Lösungen der Wahl Group</button>
+                                <div class="accordion-content">
+                                    <div class="accordion-content-inner">
+                                         <p><strong>Sein Problem:</strong> Die Uniformität des Angebots. Er findet die meisten Autos langweilig und technologisch veraltet. Ihn frustrieren starre, analoge Kaufprozesse. <br>
+                                        <strong>Unsere Lösung:</strong> Marken wie MINI, XPeng oder Jeep bieten ihm genau die Einzigartigkeit, die er sucht. Für neue Marken wie XPeng löst die Wahl Group die Vertrauenslücke: Wir bieten die Sicherheit und Kompetenz eines etablierten Händlers für ein aufregendes, neues Produkt. <br>
+                                        <strong>Der Mehrwert:</strong> Die Möglichkeit zum kompromisslosen Selbstausdruck mit einem Sicherheitsnetz.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <button class="accordion-button">Medienverhalten & Kommunikation</button>
+                                <div class="accordion-content">
+                                    <div class="accordion-content-inner">
+                                        <p><strong>Medien:</strong> Instagram und TikTok sind seine täglichen Inspirationsquellen. Er folgt Influencern und Marken mit starker, kreativer Bildsprache. Sein Konsum ist schnell, visuell und mobil. <br>
+                                        <strong>Kommunikation:</strong> Er erwartet Authentizität, Kreativität und eine coole Story. Die Marke muss eine Persönlichkeit haben. Der Kaufprozess sollte so digital und nahtlos wie möglich sein.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+         <!-- ======= Cluster 4: Spezialisten & Nischen ======= -->
+        <section id="cluster-spezialisten" class="cluster-detail reveal">
+             <div class="container">
+                <div class="cluster-header">
+                    <h2>Cluster 4: Spezialisten & Nischen</h2>
+                    <p>Dieses Cluster fasst Marken zusammen, die jeweils eine sehr spitze und eigenständige emotionale Nische bedienen. Eine gemeinsame emotionale Welt gibt es nicht, daher die separate Analyse.</p>
+                </div>
+
+                <div class="cluster-grid">
+                     <div class="cluster-card">
+                        <h3>Jeep: Die Abenteurer</h3>
+                        <p><strong>Emotionale Welt:</strong> Geteilt zwischen Dominanz (Kontrolle über Natur) und Stimulanz (Freiheit, Abenteuer). Der Kunde sucht das Gefühl, jederzeit aus dem Alltag ausbrechen zu können. Die tiefste Angst ist ein durchgeplantes, vorhersehbares Leben.</p>
+                    </div>
+                     <div class="cluster-card">
+                        <h3>Dacia: Die Rationalisten</h3>
+                        <p><strong>Emotionale Welt:</strong> Eine extreme Ausprägung des Balance-Systems. Der Kunde sucht die Befriedigung, die absolut klügste und rationalste Kaufentscheidung getroffen zu haben. Die größte Angst ist, Geld für unnötigen Status verschwendet zu haben.</p>
+                    </div>
+                     <div class="cluster-card">
+                        <h3>Alpine: Die Enthusiasten</h3>
+                        <p><strong>Emotionale Welt:</strong> Eine puristische Mischung aus Dominanz (Beherrschung des Fahrzeugs) und Stimulanz (Nervenkitzel). Der Kunde sucht das authentische Gefühl des Rennsports. Die größte Angst ist ein synthetisches, gefiltertes Fahrerlebnis.</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; 2025 Wahl Group | Interne Analyse zur Marken- und Zielgruppenstrategie</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+
+            // --- Funktion für sanfte Scroll-Animationen beim Erscheinen ---
+            const revealElements = document.querySelectorAll('.reveal');
+
+            const revealObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+
+            revealElements.forEach(element => {
+                revealObserver.observe(element);
+            });
+
+
+            // --- Funktion für die Akkordeon-Elemente ---
+            const accordionButtons = document.querySelectorAll('.accordion-button');
+
+            accordionButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const accordionContent = button.nextElementSibling;
+                    const isActive = button.classList.contains('active');
+
+                    // Schließe alle anderen offenen Akkordeons im selben Container
+                    button.closest('.accordion').querySelectorAll('.accordion-item').forEach(item => {
+                        item.querySelector('.accordion-button').classList.remove('active');
+                        item.querySelector('.accordion-content').style.maxHeight = null;
+                    });
+
+                    // Öffne das geklickte Akkordeon, wenn es vorher geschlossen war
+                    if (!isActive) {
+                        button.classList.add('active');
+                        accordionContent.style.maxHeight = accordionContent.scrollHeight + "px";
+                    }
+                });
+            });
+
+        });
+    </script>
+</body>
+</html>
