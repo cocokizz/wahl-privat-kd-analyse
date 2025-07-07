@@ -380,7 +380,7 @@
             background-color: var(--bg-light);
             padding: 2rem;
             border-radius: 8px;
-            margin-top: 4rem; /* Added margin for spacing */
+            margin-top: 4rem;
             border: 1px solid var(--border-color);
         }
         .milieu-analysis-text h3 {
@@ -404,8 +404,8 @@
 
         .milieu-map-wrapper {
             position: relative;
-            max-width: 1000px; /* Limit map width */
-            margin: 0 auto 3rem auto; /* Center map */
+            max-width: 1000px;
+            margin: 0 auto 3rem auto;
         }
 
         .milieu-map-image {
@@ -416,8 +416,8 @@
 
         .milieu-marker {
             position: absolute;
-            width: 2rem; /* 32px */
-            height: 2rem; /* 32px */
+            width: 2rem;
+            height: 2rem;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -428,7 +428,7 @@
             border: 2px solid var(--text-primary);
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
             font-size: 0.875rem;
-            transform: translate(-50%, -50%); /* Center the marker */
+            transform: translate(-50%, -50%);
         }
 
         .milieu-legend {
@@ -470,6 +470,52 @@
             font-size: 0.8rem;
         }
         
+        /* --- Customer Journey Section --- */
+        .journey-table {
+            background-color: var(--bg-light);
+            border-radius: 8px;
+            overflow: hidden;
+            margin-top: 2rem;
+            border: 1px solid var(--border-color);
+        }
+        .journey-table-header {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            background-color: var(--bg-dark);
+            padding: 1rem 1.5rem;
+            font-weight: 600;
+        }
+        .journey-table-row {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            padding: 1.5rem;
+            border-top: 1px solid var(--border-color);
+        }
+        .journey-phase {
+            font-weight: 600;
+            color: var(--primary-accent);
+        }
+
+        /* --- Touchpoint Analysis Section --- */
+        .touchpoint-container {
+            background-color: var(--bg-light);
+            padding: 2.5rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            margin-bottom: 2rem;
+        }
+        .touchpoint-container h3 {
+            color: var(--primary-accent);
+            font-size: 1.5rem;
+        }
+        .touchpoint-container h4 {
+            color: var(--text-primary);
+            font-size: 1.1rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+
         /* --- Scroll Animation --- */
         .reveal {
             opacity: 0;
@@ -498,17 +544,21 @@
                 grid-template-columns: 1fr;
             }
             .persona-demographics {
-                position: static; /* Sticky positioning aufheben */
+                position: static;
             }
         }
 
         @media (max-width: 768px) {
             section { padding: 4rem 0; }
             .main-header { padding: 1rem; }
-            .main-nav { display: none; } /* Vereinfachung für mobile Ansicht */
+            .main-nav { display: none; }
             .container { padding: 0 1.5rem; }
             .legend-grid {
                 grid-template-columns: 1fr;
+            }
+            .journey-table-header, .journey-table-row {
+                grid-template-columns: 1fr;
+                gap: 1rem;
             }
         }
     </style>
@@ -522,9 +572,8 @@
             <nav class="main-nav">
                 <ul>
                     <li><a href="#clusters">Cluster</a></li>
-                    <li><a href="#cluster-pragmatiker">Pragmatiker</a></li>
-                    <li><a href="#cluster-performer">Performer</a></li>
-                    <li><a href="#cluster-individualisten">Individualisten</a></li>
+                    <li><a href="#customer-journeys">Customer Journey</a></li>
+                    <li><a href="#touchpoint-analysis">Touchpoints</a></li>
                     <li><a href="#sinus-milieus">Sinus-Milieus</a></li>
                 </ul>
             </nav>
@@ -603,15 +652,12 @@
             </div>
         </section>
 
-        <!-- ======= Cluster 1: Moderne Pragmatiker ======= -->
+        <!-- ======= Persona Sections ======= -->
         <section id="cluster-pragmatiker" class="cluster-detail reveal">
             <div class="container">
                 <div class="cluster-header">
                     <h2>Cluster 1: Die Modernen Pragmatiker</h2>
-                    <p>Diese Gruppe bildet das Rückgrat der Gesellschaft. Ihr Handeln ist geprägt von Vernunft, dem Wunsch nach Sicherheit und der Absicherung der Familie. Das primäre Motiv ist das <strong>Balance-System.</strong></p>
-                    <p><strong>Zugehörige Marken:</strong> Opel, Ford, Skoda, Kia, Mazda, Renault, Peugeot, Citroën.</p>
                 </div>
-
                 <!-- Persona: Markus Weber -->
                 <div class="persona-section">
                     <div class="persona-demographics">
@@ -629,14 +675,6 @@
                         <h3>Wer ist Markus und was treibt ihn an?</h3>
                         <div class="accordion">
                             <div class="accordion-item">
-                                <button class="accordion-button">Sein Alltag & seine Ziele</button>
-                                <div class="accordion-content">
-                                    <div class="accordion-content-inner">
-                                        <p>Markus' Leben ist gut strukturiert. Er pendelt täglich, fährt die Kinder zum Sport und erledigt am Wochenende die Familieneinkäufe. Sein großes Ziel ist es, seiner Familie ein sicheres und schönes Leben zu ermöglichen. Das Auto ist dafür ein zentrales, multifunktionales Werkzeug.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="accordion-item">
                                 <button class="accordion-button active">Werte, Bedürfnisse & Ängste (Limbic Map)</button>
                                 <div class="accordion-content" style="max-height: fit-content;">
                                     <div class="accordion-content-inner">
@@ -644,25 +682,6 @@
                                         <strong>Bedürfnis (Balance):</strong> Sein Handeln ist stark vom Balance-System geprägt. Er hat ein tiefes Bedürfnis nach Stabilität, finanzieller Planbarkeit und Sicherheit für seine Familie. <br>
                                         <strong>Angst (Balance):</strong> Seine größte Angst ist der Kontrollverlust durch unkalkulierbare Risiken, wie eine teure Reparatur, die das Familienbudget empfindlich stören würde. <br>
                                         <strong>Wunsch (Balance/Stimulanz):</strong> Der Hauptwunsch ist Sorglosigkeit. Sein Interesse an E-Mobilität zeigt einen leichten Wunsch nach Stimulanz – modern handeln, aber nur wenn das Risiko kalkulierbar ist.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="accordion-item">
-                                <button class="accordion-button">Probleme & Lösungen der Wahl Group</button>
-                                <div class="accordion-content">
-                                    <div class="accordion-content-inner">
-                                        <p><strong>Sein Problem:</strong> Er benötigt maximale Vielseitigkeit und Zuverlässigkeit bei einem begrenzten Budget. Er ist frustriert von unklaren Preisangaben und fehlender ehrlicher Beratung. <br>
-                                        <strong>Unsere Lösung:</strong> Unsere Marken wie Skoda oder Kia bieten exzellentes Preis-Leistungs-Verhältnis und lange Garantien. Als regionaler Händler lösen wir sein Vertrauensproblem durch ehrliche Beratung und transparente Service-Pakete, die ihm die Angst vor unkalkulierbaren Kosten nehmen. <br>
-                                        <strong>Der Mehrwert:</strong> Wir bieten ihm Sorglosigkeit.</p>
-                                    </div>
-                                </div>
-                            </div>
-                             <div class="accordion-item">
-                                <button class="accordion-button">Medienverhalten & Kommunikation</button>
-                                <div class="accordion-content">
-                                    <div class="accordion-content-inner">
-                                        <p><strong>Medien:</strong> Er nutzt Facebook für soziale Kontakte und YouTube gezielt für praxisnahe Autotests und Vergleiche. Vor einem Kauf liest er detaillierte Testberichte (ADAC, AMS) und sucht in Foren nach Langzeiterfahrungen. <br>
-                                        <strong>Kommunikation:</strong> Er erwartet Transparenz, Ehrlichkeit und einen persönlichen, nahbaren Kontakt mit einem festen Ansprechpartner aus der Region.</p>
                                     </div>
                                 </div>
                             </div>
@@ -684,10 +703,6 @@
                                         <h4>Content-Strategie & Tonalität</h4>
                                         <p><strong>Tonalität:</strong> Nahbar, bodenständig, ehrlich, kompetent. Wir duzen, um Nähe aufzubauen.</p>
                                         <p><strong>Content-Fokus:</strong> Praktischer Nutzwert, Service-Tipps, Team-Vorstellungen, Kunden-Testimonials.</p>
-                                        <h4>Beispiel-Posts</h4>
-                                        <div class="example-post">
-                                            <p><strong>(Facebook Video):</strong> Ein kurzes Video mit unserem Meister: "Hallo zusammen, der TÜV steht an? Kein Problem! Wir machen für euch den Vorab-Check, damit ihr sicher durch die Prüfung kommt. Schreibt uns einfach eine Nachricht für einen Termin. Euer Team der Wahl Group!"</p>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -697,15 +712,11 @@
             </div>
         </section>
 
-        <!-- ======= Cluster 2: Premium Performer ======= -->
         <section id="cluster-performer" class="cluster-detail reveal">
              <div class="container">
                 <div class="cluster-header">
                     <h2>Cluster 2: Die Premium Performer</h2>
-                    <p>Diese ehrgeizigen Leistungsträger sehen ein Auto als Ausdruck ihres Erfolgs. Ihr Handeln zielt auf Erfolg, Kontrolle und die Bestätigung ihres hohen sozialen Status ab. Das Kernmotiv ist das <strong>Dominanz-System.</strong></p>
-                    <p><strong>Zugehörige Marken:</strong> BMW, BMW Motorrad, Alfa Romeo, DS Automobiles.</p>
                 </div>
-
                 <!-- Persona: Dr. Lena Hauser -->
                 <div class="persona-section">
                      <div class="persona-demographics">
@@ -722,14 +733,6 @@
                     <div class="persona-details">
                         <h3>Wer ist Lena und was treibt sie an?</h3>
                         <div class="accordion">
-                           <div class="accordion-item">
-                                <button class="accordion-button">Ihr Alltag & ihre Ziele</button>
-                                <div class="accordion-content">
-                                    <div class="accordion-content-inner">
-                                        <p>Lenas Tage sind lang und fordernd. Ihr Auto ist ihr mobiles Büro, ein Rückzugsort und eine Belohnung. Sie nutzt es für Geschäftstermine und genießt die Fahrdynamik zum Abschalten. Ihr Ziel ist es, an der Spitze zu stehen und sich eine hohe Lebensqualität zu bewahren.</p>
-                                    </div>
-                                </div>
-                            </div>
                             <div class="accordion-item">
                                 <button class="accordion-button active">Werte, Bedürfnisse & Ängste (Limbic Map)</button>
                                 <div class="accordion-content" style="max-height: fit-content;">
@@ -738,25 +741,6 @@
                                         <strong>Bedürfnis (Dominanz):</strong> Ihr Profil wird vom Dominanz-System angetrieben. Sie hat das Bedürfnis nach Kontrolle, Anerkennung und nach Produkten, die ihre Überlegenheit widerspiegeln. <br>
                                         <strong>Angst (Dominanz):</strong> Ihre größte Angst ist der Status- und Kontrollverlust, Bedeutungslosigkeit und vor allem Zeitverschwendung durch Inkompetenz anderer. <br>
                                         <strong>Wunsch (Dominanz/Stimulanz):</strong> Sie wünscht sich ein Fahrzeug, das ihren Erfolg repräsentiert und ihr ein Gefühl souveräner Kontrolle gibt. Das Verlangen nach "Fahrdynamik" ist ihr Bedürfnis nach einem exklusiven Erlebnis als Belohnung.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="accordion-item">
-                                <button class="accordion-button">Probleme & Lösungen der Wahl Group</button>
-                                <div class="accordion-content">
-                                    <div class="accordion-content-inner">
-                                         <p><strong>Ihr Problem:</strong> Extremer Zeitmangel und der Anspruch, dass alles in ihrem Leben hocheffizient und reibungslos funktioniert. Sie wird durch jede Form von Zeitverschwendung und mittelmäßigen Service frustriert. <br>
-                                        <strong>Unsere Lösung:</strong> Marken wie BMW bieten die erwartete Symbiose aus Performance und repräsentativem Design. Wir als Wahl Group lösen ihr Zeitproblem durch einen maßgeschneiderten Premium-Service mit persönlichem Berater, Hol- und Bring-Dienst und proaktiver Terminplanung. <br>
-                                        <strong>Der Mehrwert:</strong> Wir schenken ihr das wertvollste Gut: Zeit. Sie erhält einen Service, der so exklusiv ist wie ihr Auto.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="accordion-item">
-                                <button class="accordion-button">Medienverhalten & Kommunikation</button>
-                                <div class="accordion-content">
-                                    <div class="accordion-content-inner">
-                                        <p><strong>Medien:</strong> Sie nutzt LinkedIn aktiv zur Positionierung und Instagram passiv zur Inspiration. Sie konsumiert ausschließlich hochwertige Inhalte wie Business-Podcasts und Leitartikel in digitalen Wirtschaftsmedien. <br>
-                                        <strong>Kommunikation:</strong> Sie erwartet absolute Effizienz, Kompetenz und Exklusivität. Ein fester, proaktiver Ansprechpartner, der ihre Zeit respektiert, ist entscheidend.</p>
                                     </div>
                                 </div>
                             </div>
@@ -778,10 +762,6 @@
                                         <h4>Content-Strategie & Tonalität</h4>
                                         <p><strong>Tonalität:</strong> Souverän, kompetent, auf Augenhöhe, exklusiv. Wir siezen grundsätzlich. Die Sprache ist anspruchsvoll, aber klar.</p>
                                         <p><strong>Content-Fokus:</strong> Business Cases, Tech-Dives, Einladungen zu exklusiven Events, Marken-Heritage.</p>
-                                        <h4>Beispiel-Posts</h4>
-                                        <div class="example-post">
-                                            <p><strong>(LinkedIn Post):</strong> Professionelles Bild eines BMW X5 vor einem modernen Firmengebäude. Text: "Führung braucht einen souveränen Auftritt. Der BMW X5 kombiniert repräsentatives Design mit überlegener Effizienz dank Plug-in-Hybrid-Antrieb. Unsere Flotten-Spezialisten beraten Sie gerne zu maßgeschneiderten Leasing-Konditionen. #Firmenwagen #Leasing #WahlGroupBusiness"</p>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -791,15 +771,11 @@
             </div>
         </section>
 
-        <!-- ======= Cluster 3: Urbane Individualisten ======= -->
         <section id="cluster-individualisten" class="cluster-detail reveal">
             <div class="container">
                 <div class="cluster-header">
                     <h2>Cluster 3: Die Urbanen Individualisten</h2>
-                    <p>Diese Pioniere leben in urbanen Zentren und suchen nach Ausdruck ihrer einzigartigen Persönlichkeit. Sie sind "Early Adopters" und wollen sich von der Masse abheben. Das dominierende Motiv ist das <strong>Stimulanz-System.</strong></p>
-                    <p><strong>Zugehörige Marken:</strong> MINI, XPeng, MG, Jeep.</p>
                 </div>
-
                 <!-- Persona: Tim Köhler -->
                 <div class="persona-section">
                     <div class="persona-demographics">
@@ -816,14 +792,6 @@
                     <div class="persona-details">
                         <h3>Wer ist Tim und was treibt ihn an?</h3>
                          <div class="accordion">
-                           <div class="accordion-item">
-                                <button class="accordion-button">Sein Alltag & seine Ziele</button>
-                                <div class="accordion-content">
-                                    <div class="accordion-content-inner">
-                                        <p>Tims Leben ist flexibel und projektbasiert. Er nutzt sein Auto weniger zum Pendeln als für Freizeitaktivitäten und Ausflüge. Als Digital-Nativ ist er immer auf der Suche nach Inspiration und neuen Trends. Sein Ziel ist es, kreativ zu arbeiten und Freiraum für seine Leidenschaften zu haben.</p>
-                                    </div>
-                                </div>
-                            </div>
                             <div class="accordion-item">
                                 <button class="accordion-button active">Werte, Bedürfnisse & Ängste (Limbic Map)</button>
                                 <div class="accordion-content" style="max-height: fit-content;">
@@ -832,25 +800,6 @@
                                         <strong>Bedürfnis (Stimulanz):</strong> Sein Profil ist fast ausschließlich im Stimulanz-System verankert. Er hat ein starkes Bedürfnis nach Neuem, Abwechslung und dem Ausdruck seiner einzigartigen Persönlichkeit. <br>
                                         <strong>Angst (Stimulanz):</strong> Seine größte Angst ist die Langeweile und Konformität. Die Vorstellung, als spießig oder uninspiriert zu gelten, ist für ihn inakzeptabel. <br>
                                         <strong>Wunsch (Stimulanz):</strong> Er wünscht sich Produkte, die eine Erweiterung seines Stils sind, technologisch faszinieren ("Gadget-Faktor") und Freiheit für spontane Abenteuer geben.</p>
-                                    </div>
-                                </div>
-                            </div>
-                           <div class="accordion-item">
-                                <button class="accordion-button">Probleme & Lösungen der Wahl Group</button>
-                                <div class="accordion-content">
-                                    <div class="accordion-content-inner">
-                                         <p><strong>Sein Problem:</strong> Die Uniformität des Angebots. Er findet die meisten Autos langweilig und technologisch veraltet. Ihn frustrieren starre, analoge Kaufprozesse. <br>
-                                        <strong>Unsere Lösung:</strong> Marken wie MINI, XPeng oder Jeep bieten ihm genau die Einzigartigkeit, die er sucht. Für neue Marken wie XPeng löst die Wahl Group die Vertrauenslücke: Wir bieten die Sicherheit und Kompetenz eines etablierten Händlers für ein aufregendes, neues Produkt. <br>
-                                        <strong>Der Mehrwert:</strong> Die Möglichkeit zum kompromisslosen Selbstausdruck mit einem Sicherheitsnetz.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="accordion-item">
-                                <button class="accordion-button">Medienverhalten & Kommunikation</button>
-                                <div class="accordion-content">
-                                    <div class="accordion-content-inner">
-                                        <p><strong>Medien:</strong> Instagram und TikTok sind seine täglichen Inspirationsquellen. Er folgt Influencern und Marken mit starker, kreativer Bildsprache. Sein Konsum ist schnell, visuell und mobil. <br>
-                                        <strong>Kommunikation:</strong> Er erwartet Authentizität, Kreativität und eine coole Story. Die Marke muss eine Persönlichkeit haben. Der Kaufprozess sollte so digital und nahtlos wie möglich sein.</p>
                                     </div>
                                 </div>
                             </div>
@@ -872,10 +821,6 @@
                                         <h4>Content-Strategie & Tonalität</h4>
                                         <p><strong>Tonalität:</strong> Kreativ, mutig, witzig, authentisch. Wir nutzen Memes, aktuelle Trends und duzen immer.</p>
                                         <p><strong>Content-Fokus:</strong> Visuelles Storytelling, User-Generated Content, "Hidden Places"-Tipps, Influencer-Kooperationen.</p>
-                                        <h4>Beispiel-Posts</h4>
-                                        <div class="example-post">
-                                            <p><strong>(TikTok Video):</strong> Ein schneller Schnitt von einem MINI Electric, der leise durch die Gassen der Siegener Oberstadt fährt. Übergang zu einer Ladesäule. Text-Overlay: "Leise durch die Stadt, laut im Style. ⚡️ #MINIElectric #GoKartFeeling #Siegen". Unterlegt mit einem aktuellen Trend-Sound.</p>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -885,31 +830,145 @@
             </div>
         </section>
 
-         <!-- ======= Cluster 4: Spezialisten & Nischen ======= -->
-        <section id="cluster-spezialisten" class="cluster-detail reveal">
-             <div class="container">
+         <!-- ======= Customer Journey Section ======= -->
+        <section id="customer-journeys" class="reveal">
+            <div class="container">
                 <div class="cluster-header">
-                    <h2>Cluster 4: Spezialisten & Nischen</h2>
-                    <p>Dieses Cluster fasst Marken zusammen, die jeweils eine sehr spitze und eigenständige emotionale Nische bedienen. Eine gemeinsame emotionale Welt gibt es nicht, daher die separate Analyse.</p>
+                    <h2>Customer Journeys der Zielgruppen</h2>
+                    <p>Der Weg zum Kauf und die anschließende Kundenbindung unterscheiden sich je nach Persona fundamental.</p>
                 </div>
 
-                <div class="cluster-grid">
-                     <div class="cluster-card">
-                        <h3>Jeep: Die Abenteurer</h3>
-                        <p><strong>Emotionale Welt:</strong> Geteilt zwischen Dominanz (Kontrolle über Natur) und Stimulanz (Freiheit, Abenteuer). Der Kunde sucht das Gefühl, jederzeit aus dem Alltag ausbrechen zu können. Die tiefste Angst ist ein durchgeplantes, vorhersehbares Leben.</p>
+                <!-- Journey Table: Markus -->
+                <h3 style="text-align: left; font-size: 1.5rem;">Persona 1: Markus Weber (Der moderne Pragmatiker)</h3>
+                <div class="journey-table">
+                    <div class="journey-table-header">
+                        <div>Phase</div>
+                        <div>Beispiel für die Wahl Group</div>
                     </div>
-                     <div class="cluster-card">
-                        <h3>Dacia: Die Rationalisten</h3>
-                        <p><strong>Emotionale Welt:</strong> Eine extreme Ausprägung des Balance-Systems. Der Kunde sucht die Befriedigung, die absolut klügste und rationalste Kaufentscheidung getroffen zu haben. Die größte Angst ist, Geld für unnötigen Status verschwendet zu haben.</p>
+                    <div class="journey-table-row">
+                        <div class="journey-phase">Aufmerksamkeit (Awareness)</div>
+                        <div>Durch lokale Präsenz: Er sieht Fahrzeuge der Wahl Group im Straßenverkehr, hört einen Spot im Lokalradio oder sieht eine Anzeige in der regionalen Zeitung. Zunehmend auch durch Mundpropaganda von Kollegen oder gezielte Facebook-Werbung mit lokalem Bezug.</div>
                     </div>
-                     <div class="cluster-card">
-                        <h3>Alpine: Die Enthusiasten</h3>
-                        <p><strong>Emotionale Welt:</strong> Eine puristische Mischung aus Dominanz (Beherrschung des Fahrzeugs) und Stimulanz (Nervenkitzel). Der Kunde sucht das authentische Gefühl des Rennsports. Die größte Angst ist ein synthetisches, gefiltertes Fahrerlebnis.</p>
+                    <div class="journey-table-row">
+                        <div class="journey-phase">Interesse (Consideration)</div>
+                        <div>Markus informiert sich online. Er besucht die Wahl Group Website, vergleicht Modelle und Preise. Er liest Testberichte vom ADAC, schaut praxisnahe YouTube-Videos und prüft Google-Bewertungen des spezifischen Wahl Group Standorts in seiner Nähe.</div>
+                    </div>
+                    <div class="journey-table-row">
+                        <div class="journey-phase">Kauf (Purchase)</div>
+                        <div>Der Prozess ist primär ein Offline-Kauf. Nach der Online-Recherche vereinbart er telefonisch eine Probefahrt. Die persönliche Beratung im Autohaus ist für ihn entscheidend, um Vertrauen aufzubauen und letzte Fragen zu klären.</div>
+                    </div>
+                    <div class="journey-table-row">
+                        <div class="journey-phase">Kundenbindung (Retention)</div>
+                        <div>Durch proaktiven und verlässlichen Service. Wir binden ihn durch personalisierte E-Mails mit Terminerinnerungen für TÜV und Inspektion sowie durch saisonale Angebote wie den Winter- oder Urlaubscheck.</div>
+                    </div>
+                    <div class="journey-table-row">
+                        <div class="journey-phase">Weiterempfehlung (Advocacy)</div>
+                        <div>Markus empfiehlt uns klassisch per Mundpropaganda im Kollegen- und Freundeskreis. Nach einer positiven Service-Erfahrung ist er zudem geneigt, eine gute Google-Bewertung für unseren Standort zu hinterlassen.</div>
                     </div>
                 </div>
 
+                <!-- Journey Table: Lena -->
+                <h3 style="text-align: left; font-size: 1.5rem; margin-top: 4rem;">Persona 2: Dr. Lena Hauser (Die Premium-Performerin)</h3>
+                <div class="journey-table">
+                    <div class="journey-table-header">
+                        <div>Phase</div>
+                        <div>Beispiel für die Wahl Group</div>
+                    </div>
+                    <div class="journey-table-row">
+                        <div class="journey-phase">Aufmerksamkeit (Awareness)</div>
+                        <div>Sie wird über professionelle Kanäle aufmerksam: Gezielte Werbung auf Linkedin, Sponsoring bei Business-Events oder Fachartikel in Wirtschaftsmedien. Auch die Wahrnehmung neuer exklusiver Modelle im Geschäfts-umfeld weckt Interesse.</div>
+                    </div>
+                    <div class="journey-table-row">
+                        <div class="journey-phase">Interesse (Consideration)</div>
+                        <div>Ihre Recherche ist effizient und digital. Sie nutzt den Online-Konfigurator der Hersteller, liest Testberichte in Premium-Automagazinen und informiert sich auf der Wahl Group Website über sofort verfügbare Modelle und Leasing-Konditionen für Geschäftskunden.</div>
+                    </div>
+                    <div class="journey-table-row">
+                        <div class="journey-phase">Kauf (Purchase)</div>
+                        <div>Der Kaufprozess muss ihrem Status und Zeitmangel gerecht werden. Die erste Kontaktaufnahme erfolgt oft digital. Die persönliche Beratung ist kurz, präzise und auf Augenhöhe. Vertragsdetails werden oft vorab per E-Mail geklärt, der Besuch im Autohaus dient der finalen Bestätigung.</div>
+                    </div>
+                    <div class="journey-table-row">
+                        <div class="journey-phase">Kundenbindung (Retention)</div>
+                        <div>Durch Exklusivität und proaktiven Service. Wir binden sie durch persönliche Einladungen zu Premieren-Events, einem exklusiven Newsletter mit relevanten Business-Informationen und einen persönlichen Service-Ansprechpartner, der alles für sie regelt.</div>
+                    </div>
+                    <div class="journey-table-row">
+                        <div class="journey-phase">Weiterempfehlung (Advocacy)</div>
+                        <div>Lena empfiehlt uns in ihrem professionellen Netzwerk weiter. Eine positive Erwähnung bei einem Geschäftsessen oder auf LinkedIn hat für uns einen hohen Wert. Sie empfiehlt nicht nur das Produkt, sondern explizit den exzellenten und effizienten Service der Wahl Group.</div>
+                    </div>
+                </div>
+
+                 <!-- Journey Table: Tim -->
+                <h3 style="text-align: left; font-size: 1.5rem; margin-top: 4rem;">Persona 3: Tim Köhler (Der urbane Individualist)</h3>
+                <div class="journey-table">
+                    <div class="journey-table-header">
+                        <div>Phase</div>
+                        <div>Beispiel für die Wahl Group</div>
+                    </div>
+                    <div class="journey-table-row">
+                        <div class="journey-phase">Aufmerksamkeit (Awareness)</div>
+                        <div>Seine Awareness entsteht fast ausschließlich digital. Er sieht eine kreative Social Media Ad auf Instagram oder TikTok. Ein Tech-Influencer, dem er auf YouTube folgt, testet ein neues Modell oder er entdeckt die Marke in einem Design-Blog.</div>
+                    </div>
+                    <div class="journey-table-row">
+                        <div class="journey-phase">Interesse (Consideration)</div>
+                        <div>Er interagiert mit der Marke auf Social Media, folgt dem Kanal und schaut sich die Inhalte an. Er nutzt den visuellen Online-Konfigurator, um sein Wunschauto zu gestalten. Wichtig sind für ihn auch Community Foren und authentische Video-Reviews, die den Spaßfaktor und die Technik zeigen.</div>
+                    </div>
+                    <div class="journey-table-row">
+                        <div class="journey-phase">Kauf (Purchase)</div>
+                        <div>Tim bevorzugt einen digitalen Prozess. Er ist offen für einen Online-Kauf oder eine digitale Beratung. Die Probefahrt ist für ihn ein "Erlebnis", das er unkompliziert buchen möchte. Der Verkäufer im Autohaus muss als lockerer "Product Genius" auftreten, nicht als klassischer Verkäufer.</div>
+                    </div>
+                    <div class="journey-table-row">
+                        <div class="journey-phase">Kundenbindung (Retention)</div>
+                        <div>Wir binden ihn, indem wir eine aktive Community schaffen. Einladungen zu markenspezifischen Events (z.B. ein MINI-Treffen, ein Jeep-Offroad-Training) und kontinuierlich kreativer Social-Media-Content, mit dem er interagieren kann, sind entscheidend.</div>
+                    </div>
+                    <div class="journey-table-row">
+                        <div class="journey-phase">Weiterempfehlung (Advocacy)</div>
+                        <div>Tim ist der perfekte Markenbotschafter. Er wird sein neues Auto auf Instagram posten und uns taggen. Er ist motiviert, an User-Generated-Content-Aktionen teilzunehmen und seine positiven Erfahrungen in seinen Stories und bei Freunden zu teilen.</div>
+                    </div>
+                </div>
             </div>
         </section>
+
+        <!-- ======= Touchpoint Analysis Section ======= -->
+        <section id="touchpoint-analysis" class="reveal">
+            <div class="container">
+                <div class="cluster-header">
+                    <h2>Analyse der Social-Media-Touchpoints</h2>
+                </div>
+                <div class="touchpoint-container">
+                    <h3>Analyse für Persona 1: Markus Weber (Der moderne Pragmatiker)</h3>
+                    <h4>Typische Touchpoints der Wahl Group:</h4>
+                    <p>Markus' primärer Touchpoint in den sozialen Netzwerken wäre die lokale Facebook-Seite eines Wahl Group Standorts, z.B. "Wahl Group Betzdorf". Dort würde er auf Beiträge stoßen, die für ihn relevant sind: die Vorstellung eines neuen, geräumigen Opel-Kombis, ein saisonales Angebot für den Winterreifen-Wechsel oder Fotos von einer lokalen Familie, die ihr neues Auto abholt. Ein weiterer Touchpoint wäre YouTube, wo er nach einem Testbericht für einen Skoda Kodiaq sucht und auf ein Video stößt, das von der Wahl Group hochgeladen wurde und das Fahrzeug praxisnah vorstellt.</p>
+                    <h4>Analyse: Was funktioniert gut?</h4>
+                    <p>Was bei Markus gut funktioniert, ist die regionale Nähe und die greifbare Kompetenz. Ein Post, der den Werkstatt-Meister aus seinem Ort zeigt, schafft sofort Vertrauen. Konkrete Angebote (z.B. "TÜV-Aktion im Juli") mit klarem Preis sind für ihn nützlich. Die Ansprache ist bodenständig und auf den Punkt – das schätzt er.</p>
+                    <h4>Analyse: Wo gibt es „Streulücken“?</h4>
+                    <p>Eine wahrscheinliche Streulücke ist die mangelnde Interaktivität und Community-Pflege. Oft werden solche Facebook-Seiten als reiner Sende-Kanal für Angebote genutzt. Es fehlt der Raum für einen einfachen, unkomplizierten Dialog. Eine weitere Lücke ist oft der Mangel an nutzergenerierten Inhalten. Die positiven Erfahrungen von Kunden wie Markus werden nicht aktiv eingefordert und sichtbar gemacht.</p>
+                    <h4>Analyse: Wie wirkt sich das auf die Kundenbindung und Loyalität aus?</h4>
+                    <p>Eine rein werbliche Ausrichtung führt dazu, dass Markus die Seite als "Werbeprospekt" wahrnimmt und die Inhalte mental ausblendet. Seine Bindung bleibt rein transaktional. Würde die Wahl Group hingegen eine aktive, hilfreiche Community aufbauen, in der er auch mal eine schnelle Frage via Messenger stellen kann, würde sich seine Loyalität deutlich erhöhen. Er würde sich als Teil einer lokalen Gemeinschaft fühlen und wäre eher geneigt, den Händler aktiv im Freundes- und Kollegenkreis zu empfehlen.</p>
+                </div>
+                <div class="touchpoint-container">
+                    <h3>Analyse für Persona 2: Dr. Lena Hauser (Die Premium-Performerin)</h3>
+                    <h4>Typische Touchpoints der Wahl Group:</h4>
+                    <p>Lenas wichtigster potenzieller Touchpoint wäre der professionelle Auftritt der Wahl Group auf LinkedIn. Hier würde sie auf Beiträge stoßen, die auf ihre Bedürfnisse als Geschäftskundin zugeschnitten sind: z.B. eine Analyse der steuerlichen Vorteile des neuen BMW i5, eine Einladung zu einem exklusiven Business-Netzwerkevent oder die Vorstellung des Flottenkunden-Teams. Auf Instagram würde sie hochwertige, ästhetische Posts von Marken wie BMW oder Alfa Romeo sehen, die das Design und den exklusiven Charakter betonen.</p>
+                    <h4>Analyse: Was funktioniert gut?</h4>
+                    <p>Bei Lena funktioniert ausschließlich hochprofessioneller, relevanter Content. Ein gut recherchierter Beitrag auf LinkedIn, der ihr konkrete Business-Vorteile aufzeigt, würde ihre Aufmerksamkeit erregen. Ebenso wirken ästhetisch perfekte Bilder und Videos auf Instagram, die den Premium-Anspruch der Fahrzeuge unterstreichen und zu ihrem eigenen hohen Qualitätsanspruch passen.</p>
+                    <h4>Analyse: Wo gibt es „Streulücken“?</h4>
+                    <p>Die größte Streulücke für diese Zielgruppe ist oft ein vernachlässigter oder nicht vorhandener LinkedIn-Auftritt der Händlergruppe. Wenn die Wahl Group nur auf Facebook aktiv ist, existiert sie in Lenas digitaler Welt praktisch nicht. Eine weitere Lücke wäre generischer, unpersönlicher Content. Ein Post wie "Unser Auto der Woche" würde sie sofort als irrelevant einstufen und ignorieren.</p>
+                    <h4>Analyse: Wie wirkt sich das auf die Kundenbindung und Loyalität aus?</h4>
+                    <p>Eine fehlende Präsenz auf den von ihr genutzten professionellen Kanälen untergräbt die Wahrnehmung der Wahl Group als ernstzunehmender Partner auf Augenhöhe. Dies kann die langfristige Loyalität bei hochpreisigen Leasingverträgen gefährden. Ohne exklusive digitale Inhalte und Einladungen fühlt sie sich nicht als wertgeschätzte Premium-Kundin, was ihre Bindung schwächt und sie bei der nächsten Entscheidung offen für Wettbewerber macht.</p>
+                </div>
+                <div class="touchpoint-container">
+                    <h3>Analyse für Persona 3: Tim Köhler (Der urbane Individualist)</h3>
+                    <h4>Typische Touchpoints der Wahl Group:</h4>
+                    <p>Tim würde auf die Wahl Group über die spezifischen Kanäle der von ihm begehrten Marken stoßen, idealerweise in einer Kooperation mit dem Händler. Ein kreatives Reel auf Instagram oder ein witziges Video auf TikTok, das einen MINI oder Jeep in einer coolen Location in Szene setzt, wäre ein typischer Touchpoint. Eine weitere Möglichkeit wäre eine Kooperation mit einem lokalen Influencer oder Blogger, der ein Fahrzeug wie den XPeng für ein Wochenende testet und darüber berichtet.</p>
+                    <h4>Analyse: Was funktioniert gut?</h4>
+                    <p>Bei Tim funktioniert nur authentischer, kreativer und unterhaltsamer Content. Kurze, schnelle Videos, die eine Geschichte erzählen oder ein einzigartiges Feature demonstrieren, sind perfekt. Interaktive Formate wie Umfragen in Instagram Stories ("Welches Design gefällt euch besser?") oder User-Generated-Content-Kampagnen ("Zeig uns dein #JeepAbenteuer") würden ihn zur Interaktion motivieren.</p>
+                    <h4>Analyse: Wo gibt es „Streulücken“?</h4>
+                    <p>Die größte anzunehmende Streulücke ist die komplette Abwesenheit auf Kanälen wie TikTok oder eine zu konservative, werbliche Content-Strategie auf Instagram. Ein zentraler Account der Wahl Group, der versucht, alle Marken von Dacia bis XPeng zu bespielen, kann den spezifischen "Vibe" dieser Lifestyle-Marken nicht treffen und würde von Tim sofort als unauthentisch und "cringe" eingestuft werden.</p>
+                    <h4>Analyse: Wie wirkt sich das auf die Kundenbindung und Loyalität aus?</h4>
+                    <p>Für diese Zielgruppe sind die Auswirkungen dramatisch. Ohne passende, coole Touchpoints findet die Wahl Group in der Awareness- und Consideration-Phase für Tim gar nicht statt. Er würde annehmen, dass man diese Marken nur bei spezialisierten Händlern in Metropolen bekommt. Findet er nach einem Kauf keine digitale Community oder inspirierenden Content vor, verpufft seine anfängliche Begeisterung. Das riesige Potenzial für organisches Wachstum durch seine Weiterempfehlungen und Posts in den sozialen Medien ginge komplett verloren.</p>
+                </div>
+            </div>
+        </section>
+
 
         <!-- ======= Sinus Milieus Section ======= -->
         <section id="sinus-milieus" class="cluster-detail reveal">
